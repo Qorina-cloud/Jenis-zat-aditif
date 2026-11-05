@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Ajar Interaktif IPA: Jenis-Jenis Zat Aditif - MGMP IPA MTs Kota Malang</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                        },
+                        amber: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Styles for Printing and Animations */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #print-section, #print-section * {
+                visibility: visible;
+            }
+            #print-section {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+        
+        .tab-btn.active {
+            background-color: #22c55e;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(34, 197, 94, 0.4);
+        }
+
+        .materi-card {
+            transition: all 0.3s ease;
+        }
+        .materi-card:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Header Navigation -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-2xl border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-3 md:py-4 gap-3">
+                <!-- Identitas Penyusun MGMP IPA MTs Kota Malang -->
+                <div class="flex items-center space-x-3 text-center md:text-left">
+                    <div class="w-12 h-12 bg-gradient-to-tr from-brand-500 to-emerald-300 rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-105 transition">
+                        <i class="fa-solid fa-flask-vial text-2xl text-slate-900 font-bold"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-center md:justify-start gap-2">
+                            <span class="bg-amber-400 text-slate-950 font-extrabold text-[11px] px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-sm">IPA KELAS IX SMP/MTs</span>
+                            <span class="text-xs text-slate-400 font-medium">Fase D / Semester 1</span>
+                        </div>
+                        <h1 class="text-xl md:text-2xl font-extrabold tracking-tight text-white">Jenis-Jenis Zat Aditif Makanan</h1>
+                        <p class="text-xs text-emerald-400 font-semibold">Disusun oleh: <span class="text-white underline decoration-emerald-500 font-bold">MGMP IPA MTs Kota Malang</span></p>
+                    </div>
+                </div>
+
+                <!-- Tombol Navigasi Utama -->
+                <nav class="flex flex-wrap justify-center gap-1.5 bg-slate-800 p-1.5 rounded-2xl border border-slate-700 no-print shadow-inner">
+                    <button onclick="switchTab('pendahuluan')" id="tab-pendahuluan" class="tab-btn active px-4 py-2 rounded-xl text-xs md:text-sm font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-compass"></i> <span>Pendahuluan</span>
+                    </button>
+                    <button onclick="switchTab('materi')" id="tab-materi" class="tab-btn px-4 py-2 text-slate-300 hover:text-white rounded-xl text-xs md:text-sm font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group"></i> <span>Materi</span>
+                    </button>
+                    <button onclick="switchTab('lab')" id="tab-lab" class="tab-btn px-4 py-2 text-slate-300 hover:text-white rounded-xl text-xs md:text-sm font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-microscope"></i> <span>Lab Virtual</span>
+                    </button>
+                    <button onclick="switchTab('lkpd')" id="tab-lkpd" class="tab-btn px-4 py-2 text-slate-300 hover:text-white rounded-xl text-xs md:text-sm font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-file-pen"></i> <span>LKPD</span>
+                    </button>
+                    <button onclick="switchTab('kuis')" id="tab-kuis" class="tab-btn px-4 py-2 text-slate-300 hover:text-white rounded-xl text-xs md:text-sm font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-award"></i> <span>Kuis</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- ================= SECTION 1: PENDAHULUAN ================= -->
+        <section id="sec-pendahuluan" class="tab-content space-y-6">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-700 text-white p-6 md:p-10 shadow-xl">
+                <div class="relative z-10 max-w-3xl">
+                    <span class="bg-amber-400 text-slate-950 font-bold text-xs px-3 py-1 rounded-full inline-block mb-3 shadow">Apersepsi & Literasi Sains</span>
+                    <h2 class="text-2xl md:text-4xl font-extrabold mb-4 leading-tight">Mengapa Makanan Olahan Memiliki Warna, Rasa, dan Ketahanan Berbeda?</h2>
+                    <p class="text-slate-100 text-sm md:text-base mb-6 leading-relaxed">
+                        Saat kamu membeli makanan atau minuman di kantin madrasah, pernahkah kamu berpikir mengapa warnanya begitu cerah, rasanya sangat manis/gurih, atau dapat bertahan lama tanpa basi? Semua itu berhubungan erat dengan **Zat Aditif**. Mari pelajari jenis-jenisnya agar kita menjadi konsumen yang bijak dan sehat!
+                    </p>
+                    <button onclick="switchTab('materi')" class="bg-amber-400 hover:bg-amber-300 text-slate-950 px-6 py-3 rounded-xl font-extrabold text-sm shadow-lg transform hover:-translate-y-0.5 transition flex items-center gap-2">
+                        <span>Eksplorasi Jenis Zat Aditif</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="absolute -right-10 -bottom-10 opacity-15 pointer-events-none text-slate-100">
+                    <i class="fa-solid fa-burger text-[240px]"></i>
+                </div>
+            </div>
+
+            <!-- Learning Objectives & Competencies -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Objectives -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-emerald-100 text-brand-600 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="font-extrabold text-lg text-slate-900 mb-2">Tujuan Pembelajaran</h3>
+                    <ul class="text-xs md:text-sm text-slate-600 space-y-2 list-disc list-inside font-medium">
+                        <li>Mengidentifikasi jenis-jenis zat aditif alami dan buatan/sintetis.</li>
+                        <li>Membedakan fungsi pewarna, pemanis, pengawet, penyedap, pengemulsi, dan pengental.</li>
+                        <li>Menganalisis dampak penggunaan zat aditif berbahaya bagi kesehatan tubuh.</li>
+                    </ul>
+                </div>
+
+                <!-- Indicators -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-vial-circle-check"></i>
+                    </div>
+                    <h3 class="font-extrabold text-lg text-slate-900 mb-2">Indikator Ketercapaian</h3>
+                    <ul class="text-xs md:text-sm text-slate-600 space-y-2 list-disc list-inside font-medium">
+                        <li>Mampu mengelompokkan 7 jenis utama zat aditif pada produk kemasan.</li>
+                        <li>Melakukan pengujian virtual lab reaksi kimia pewarna alami vs buatan.</li>
+                        <li>Menyusun tabel analisis kemasan makanan pada LKPD interaktif.</li>
+                    </ul>
+                </div>
+
+                <!-- Instructions -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h3 class="font-extrabold text-lg text-slate-900 mb-2">Panduan Belajar</h3>
+                    <ol class="text-xs md:text-sm text-slate-600 space-y-2 list-decimal list-inside font-medium">
+                        <li>Pelajari materi ringkas pada tab **Materi**.</li>
+                        <li>Uji sifat pewarna makanan di **Lab Virtual**.</li>
+                        <li>Isi formulir pengamatan makanan di tab **LKPD**.</li>
+                        <li>Evaluasi pemahamanmu melalui **Kuis Interaktif**.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 2: MATERI PEMBELAJARAN ================= -->
+        <section id="sec-materi" class="tab-content hidden space-y-6">
+            <!-- Definisi Utama -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="w-3 h-8 bg-brand-500 rounded-full inline-block"></span>
+                    <h3 class="text-xl font-extrabold text-slate-900">Pengertian Zat Aditif</h3>
+                </div>
+                <p class="text-slate-600 leading-relaxed text-sm md:text-base font-medium">
+                    <strong>Zat Aditif Makanan</strong> adalah bahan yang sengaja ditambahkan ke dalam makanan atau minuman selama proses pengolahan, penyimpanan, atau pengemasan untuk memperbaiki penampilan, rasa, tekstur, nilai gizi, maupun daya simpan produk.
+                </p>
+            </div>
+
+            <!-- Grid 7 Jenis Zat Aditif -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- 1. Pewarna -->
+                <div class="materi-card bg-white p-5 rounded-2xl border-2 border-red-100 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-red-500 text-white flex items-center justify-center font-bold shadow">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-extrabold text-slate-900">1. Pewarna (Colorant)</h4>
+                            <span class="text-[11px] text-red-600 font-bold">Mempercantik Tampilan</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-3 leading-relaxed">Menjadikan warna makanan/minuman terlihat lebih menarik dan menggugah selera.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+                            <strong class="text-emerald-800 block mb-0.5">🌿 Alami:</strong>
+                            <p class="text-slate-700">Kunyit (Kuning), Daun Suji/Pandan (Hijau), Buah Naga (Merah), Wortel (Oranye).</p>
+                        </div>
+                        <div class="bg-rose-50 p-2.5 rounded-xl border border-rose-200">
+                            <strong class="text-rose-800 block mb-0.5">🧪 Sintetis/Buatan:</strong>
+                            <p class="text-slate-700">Tartrazin (Kuning), Ponceau 4R (Merah), Brilliant Blue FCF (Biru).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Pemanis -->
+                <div class="materi-card bg-white p-5 rounded-2xl border-2 border-amber-100 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold shadow">
+                            <i class="fa-solid fa-cubes-stacked"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-extrabold text-slate-900">2. Pemanis (Sweetener)</h4>
+                            <span class="text-[11px] text-amber-600 font-bold">Memberikan Rasa Manis</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-3 leading-relaxed">Memberi rasa manis alami atau rendah kalori pada olahan makanan.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+                            <strong class="text-emerald-800 block mb-0.5">🌿 Alami:</strong>
+                            <p class="text-slate-700">Gula Pasir, Gula Aren/Merah, Madu, Daun Stevia.</p>
+                        </div>
+                        <div class="bg-rose-50 p-2.5 rounded-xl border border-rose-200">
+                            <strong class="text-rose-800 block mb-0.5">🧪 Sintetis/Buatan:</strong>
+                            <p class="text-slate-700">Sakarin, Aspartam, Siklamat, Sorbitol (kalori rendah untuk penderita diabetes).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Pengawet -->
+                <div class="materi-card bg-white p-5 rounded-2xl border-2 border-blue-100 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500 text-white flex items-center justify-center font-bold shadow">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-extrabold text-slate-900">3. Pengawet (Preservative)</h4>
+                            <span class="text-[11px] text-blue-600 font-bold">Mencegah Pembusukan</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-3 leading-relaxed">Menghambat pertumbuhan jamur, mikroorganisme, atau bakteri pada makanan.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+                            <strong class="text-emerald-800 block mb-0.5">🌿 Alami:</strong>
+                            <p class="text-slate-700">Pengaraman (Asinan/Ikan Asin), Gula Pekat (Manisan), Pengasapan.</p>
+                        </div>
+                        <div class="bg-rose-50 p-2.5 rounded-xl border border-rose-200">
+                            <strong class="text-rose-800 block mb-0.5">🧪 Sintetis/Buatan:</strong>
+                            <p class="text-slate-700">Natrium Benzoat, Asam Propionat, Natrium Nitrit (pada kornet/sosis).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Penyedap -->
+                <div class="materi-card bg-white p-5 rounded-2xl border-2 border-emerald-100 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-bold shadow">
+                            <i class="fa-solid fa-bowl-food"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-extrabold text-slate-900">4. Penyedap (Flavor Enhancer)</h4>
+                            <span class="text-[11px] text-emerald-600 font-bold">Meningkatkan Cita Rasa</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-3 leading-relaxed">Memperkuat rasa gurih (umami) dan kelezatan hidangan makanan.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+                            <strong class="text-emerald-800 block mb-0.5">🌿 Alami:</strong>
+                            <p class="text-slate-700">Bawang Merah/Putih, Kaldu Daging/Jamur, Garam Dapur, Rempah-rempah.</p>
+                        </div>
+                        <div class="bg-rose-50 p-2.5 rounded-xl border border-rose-200">
+                            <strong class="text-rose-800 block mb-0.5">🧪 Sintetis/Buatan:</strong>
+                            <p class="text-slate-700">Monosodium Glutamat (MSG / Vetsin).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Pemberi Aroma -->
+                <div class="materi-card bg-white p-5 rounded-2xl border-2 border-purple-100 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500 text-white flex items-center justify-center font-bold shadow">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-extrabold text-slate-900">5. Pemberi Aroma (Flavoring)</h4>
+                            <span class="text-[11px] text-purple-600 font-bold">Menambah Harum Makanan</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-3 leading-relaxed">Memberikan daya tarik wangi khas buah atau bahan tertentu pada olahan.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+                            <strong class="text-emerald-800 block mb-0.5">🌿 Alami:</strong>
+                            <p class="text-slate-700">Ekstrak Vanili, Daun Pandan, Perasan Jeruk Lemon, Minyak Cengkeh.</p>
+                        </div>
+                        <div class="bg-rose-50 p-2.5 rounded-xl border border-rose-200">
+                            <strong class="text-rose-800 block mb-0.5">🧪 Sintetis (Ester):</strong>
+                            <p class="text-slate-700">Amil Asetat (Aroma Pisang), Etil Butirat (Aroma Nanas), Amil Valerat (Apel).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Pengemulsi & Pengental -->
+                <div class="materi-card bg-white p-5 rounded-2xl border-2 border-cyan-100 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500 text-white flex items-center justify-center font-bold shadow">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-extrabold text-slate-900">6. Pengemulsi & Pengental</h4>
+                            <span class="text-[11px] text-cyan-600 font-bold">Menjaga Tekstur & Homogenitas</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-3 leading-relaxed">Mencampurkan bahan yang sulit menyatu (seperti air & minyak) dan mengentalkan adonan.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+                            <strong class="text-emerald-800 block mb-0.5">🌿 Alami:</strong>
+                            <p class="text-slate-700">Lesisin Kuning Telur (Mayones), Agar-agar, Tepung Maizena, Gelatin.</p>
+                        </div>
+                        <div class="bg-rose-50 p-2.5 rounded-xl border border-rose-200">
+                            <strong class="text-rose-800 block mb-0.5">🧪 Sintetis:</strong>
+                            <p class="text-slate-700">Karboksimetil Selulosa (CMC), Gliserol Monostearat.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Danger Alert Box -->
+            <div class="bg-rose-50 border-2 border-rose-200 rounded-2xl p-5 flex flex-col md:flex-row items-start gap-4 shadow-sm">
+                <div class="w-12 h-12 bg-rose-500 text-white rounded-xl flex items-center justify-center text-2xl font-bold flex-shrink-0">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div>
+                    <h4 class="font-extrabold text-rose-900 text-base mb-1">Zat Aditif Terlarang & Berbahaya Bagi Kesehatan!</h4>
+                    <p class="text-xs md:text-sm text-rose-800 leading-relaxed font-medium">
+                        Beberapa zat kimia non-makanan dilarang keras digunakan sebagai aditif makanan:
+                    </p>
+                    <ul class="text-xs md:text-sm text-rose-800 list-disc list-inside mt-2 space-y-1 font-semibold">
+                        <li><strong>Boraks (Pengenyal Berbahaya):</strong> Sering disalahgunakan pada bakso/lontong. Memicu kanker dan kerusakan ginjal.</li>
+                        <li><strong>Formalin (Pengawet Mayat):</strong> Menyebabkan iritasi lambung akut, kegagalan organ, dan kanker.</li>
+                        <li><strong>Rhodamin B (Pewarna Tekstil Merah):</strong> Mengendap di hati dan merusak fungsi saraf.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 3: LABORATORIUM VIRTUAL ================= -->
+        <section id="sec-lab" class="tab-content hidden space-y-6">
+            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 shadow-2xl">
+                
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-slate-800 pb-4">
+                    <div>
+                        <span class="bg-emerald-500/20 text-emerald-400 font-extrabold text-xs px-3 py-1 rounded-full border border-emerald-500/30">Simulasi Interaktif</span>
+                        <h3 class="text-2xl font-extrabold mt-1">Laboratorium Uji Sifat Pewarna Makanan</h3>
+                        <p class="text-xs text-slate-400">Uji ketahanan dan perubahan warna alami vs sintetis saat ditambahkan zat Asam (Cuka) dan Basa (Deterjen).</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Control Panel -->
+                    <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 space-y-5">
+                        <div>
+                            <label class="block font-bold text-amber-400 text-xs uppercase tracking-wider mb-2">1. Pilih Sampel Pewarna:</label>
+                            <select id="sample-select" onchange="updateLabSample()" class="w-full bg-slate-900 border-2 border-slate-700 rounded-xl p-3 text-xs text-white font-bold focus:outline-none focus:border-brand-500 cursor-pointer">
+                                <option value="kunyit">Ekstrak Kunyit (Pewarna Alami)</option>
+                                <option value="sirup_sintetis">Tartrazin / Sirup Kuning (Pewarna Buatan)</option>
+                                <option value="buah_naga">Ekstrak Buah Naga (Pewarna Alami)</option>
+                                <option value="rhodamin">Saos Merah Rhodamin B (Pewarna Tekstil/Terlarang)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block font-bold text-amber-400 text-xs uppercase tracking-wider mb-2">2. Tambahkan Larutan Uji (Reagen):</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="applyReagent('deterjen')" class="bg-indigo-600 hover:bg-indigo-500 text-white py-3 px-2 rounded-xl text-xs font-extrabold transition shadow-md active:scale-95 flex items-center justify-center gap-1.5">
+                                    <i class="fa-solid fa-soap"></i> + Deterjen (Basa)
+                                </button>
+                                <button onclick="applyReagent('cuka')" class="bg-rose-600 hover:bg-rose-500 text-white py-3 px-2 rounded-xl text-xs font-extrabold transition shadow-md active:scale-95 flex items-center justify-center gap-1.5">
+                                    <i class="fa-solid fa-flask"></i> + Cuka (Asam)
+                                </button>
+                            </div>
+                        </div>
+
+                        <button onclick="resetLabPewarna()" class="w-full bg-slate-700 hover:bg-slate-600 text-slate-200 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 mt-4 border border-slate-600">
+                            <i class="fa-solid fa-rotate-left"></i> Reset Tabung Reaksi
+                        </button>
+                    </div>
+
+                    <!-- Visual Beaker Workspace -->
+                    <div class="lg:col-span-2 bg-slate-950 p-6 rounded-2xl border border-slate-800 flex flex-col items-center justify-between min-h-[340px] relative">
+                        
+                        <div class="text-center w-full">
+                            <span id="lab-sample-title" class="font-extrabold text-emerald-400 text-lg">Ekstrak Kunyit (Pewarna Alami)</span>
+                            <p id="lab-reagent-status" class="text-xs text-slate-400 mt-0.5">Status: Belum ditambahi reagen uji.</p>
+                        </div>
+
+                        <!-- Animated Beaker Visual -->
+                        <div class="relative w-40 h-52 border-4 border-slate-500 border-t-0 rounded-b-3xl bg-slate-900/60 flex flex-col justify-end overflow-hidden shadow-2xl my-4">
+                            <!-- Fluid Fill -->
+                            <div id="beaker-fluid" class="w-full transition-all duration-700 bg-amber-500 h-3/4 flex items-center justify-center relative shadow-inner">
+                                <div class="absolute inset-0 bg-white/10 animate-pulse"></div>
+                                <span id="fluid-label" class="text-[11px] font-extrabold text-slate-950 bg-white/90 px-3 py-1 rounded-full shadow">Kuning Kunyit Alami</span>
+                            </div>
+                        </div>
+
+                        <!-- Result Analysis Box -->
+                        <div id="lab-result-box" class="w-full bg-slate-900 p-4 rounded-xl border border-slate-800 text-xs">
+                            <span class="font-bold text-amber-400 block mb-1">Hasil & Kesimpulan Sains:</span>
+                            <p id="lab-result-text" class="text-slate-300 leading-relaxed font-medium">Silakan tambahkan larutan deterjen (basa) atau cuka (asam) untuk menguji kestabilan struktur zat warna.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 4: LKPD INTERAKTIF ================= -->
+        <section id="sec-lkpd" class="tab-content hidden space-y-6">
+            <div id="print-section" class="bg-white rounded-3xl p-6 md:p-10 border border-slate-200/80 shadow-md space-y-6">
+                <!-- Header LKPD -->
+                <div class="border-b-2 border-slate-900 pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span class="text-xs font-bold text-brand-600 tracking-wider uppercase">Lembar Kerja Peserta Didik (LKPD)</span>
+                        <h2 class="text-xl md:text-2xl font-extrabold text-slate-900">Identifikasi & Analisis Jenis Zat Aditif</h2>
+                        <p class="text-xs text-slate-500 font-semibold">Mata Pelajaran IPA Kelas IX - MTs Kota Malang</p>
+                    </div>
+                    <button onclick="window.print()" class="no-print bg-brand-500 hover:bg-brand-600 text-white px-5 py-2.5 rounded-xl text-xs font-extrabold transition flex items-center gap-2 shadow-lg">
+                        <i class="fa-solid fa-print"></i> Cetak / Simpan PDF
+                    </button>
+                </div>
+
+                <!-- Form Identitas -->
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-medium">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Nama Lengkap Siswa:</label>
+                        <input type="text" placeholder="Ketik nama lengkap..." class="w-full p-2.5 bg-white border border-slate-300 rounded-xl focus:outline-none focus:border-brand-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Kelas / No. Absen:</label>
+                        <input type="text" placeholder="Contoh: IX-B / 15" class="w-full p-2.5 bg-white border border-slate-300 rounded-xl focus:outline-none focus:border-brand-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Nama MTs / Sekolah:</label>
+                        <input type="text" placeholder="Nama MTs..." class="w-full p-2.5 bg-white border border-slate-300 rounded-xl focus:outline-none focus:border-brand-500">
+                    </div>
+                </div>
+
+                <!-- Tabel Pengamatan LKPD -->
+                <div class="space-y-3">
+                    <h3 class="font-extrabold text-slate-900 text-sm md:text-base flex items-center gap-2">
+                        <span class="w-6 h-6 bg-brand-500 text-white rounded-full flex items-center justify-center text-xs">1</span>
+                        Tabel Identifikasi Komposisi Kemasan Makanan/Minuman
+                    </h3>
+                    <p class="text-xs text-slate-600 font-medium">Amati kemasan makanan ringan/minuman di sekitarmu, lalu masukkan data komposisi zat aditif ke dalam tabel berikut:</p>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs text-left text-slate-700 border border-slate-200 rounded-xl overflow-hidden">
+                            <thead class="bg-slate-100 text-slate-900 uppercase font-bold text-[11px]">
+                                <tr>
+                                    <th class="p-3 border-b">Nama Produk</th>
+                                    <th class="p-3 border-b">Pewarna</th>
+                                    <th class="p-3 border-b">Pemanis</th>
+                                    <th class="p-3 border-b">Pengawet / Penyedap</th>
+                                    <th class="p-3 border-b">Pengemulsi / Lainnya</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 font-medium">
+                                <tr>
+                                    <td class="p-2"><input type="text" placeholder="Contoh: Snack Keju" class="w-full p-2 border rounded-lg"></td>
+                                    <td class="p-2"><input type="text" placeholder="Kuning Tartrazin Cl 19140" class="w-full p-2 border rounded-lg"></td>
+                                    <td class="p-2"><input type="text" placeholder="Gula Pasir, Gula Halus" class="w-full p-2 border rounded-lg"></td>
+                                    <td class="p-2"><input type="text" placeholder="Monosodium Glutamat (MSG)" class="w-full p-2 border rounded-lg"></td>
+                                    <td class="p-2"><input type="text" placeholder="Lesisin Kedelai" class="w-full p-2 border rounded-lg"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2"><input type="text" placeholder="Produk 2..." class="w-full p-2 border rounded-lg"></td>
+                                    <td class="p-2"><input type="text" class="w-full p-2 border rounded-lg"></td>
+                                    <td class="p-2"><input type="text" class="w-full p-2 border rounded-lg"></td>
+                                    <td class="p-2"><input type="text" class="w-full p-2 border rounded-lg"></td>
+                                    <td class="p-2"><input type="text" class="w-full p-2 border rounded-lg"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Pertanyaan Reflektif LKPD -->
+                <div class="space-y-4 pt-2">
+                    <h3 class="font-extrabold text-slate-900 text-sm md:text-base flex items-center gap-2">
+                        <span class="w-6 h-6 bg-brand-500 text-white rounded-full flex items-center justify-center text-xs">2</span>
+                        Pertanyaan Diskusi & Analisis Konseptual
+                    </h3>
+
+                    <div class="space-y-4 text-xs font-medium">
+                        <div>
+                            <label class="block font-bold text-slate-800 mb-1">A. Mengapa produsen makanan lebih sering memilih pewarna sintetis dibandingkan pewarna alami? Jelaskan kelebihan dan kekurangannya!</label>
+                            <textarea rows="3" placeholder="Tuliskan analisis jawaban sainsmu di sini..." class="w-full p-3 border border-slate-300 rounded-xl focus:outline-none focus:border-brand-500"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block font-bold text-slate-800 mb-1">B. Apa perbedaan mendasar antara zat aditif pengemulsi dengan zat aditif pengental pada produk olahan cair/pasta?</label>
+                            <textarea rows="3" placeholder="Tuliskan penjelasan fungsi masing-masing zat di sini..." class="w-full p-3 border border-slate-300 rounded-xl focus:outline-none focus:border-brand-500"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Signature Section for Print -->
+                <div class="pt-6 border-t border-slate-200 grid grid-cols-2 gap-4 text-center text-xs font-medium">
+                    <div>
+                        <p class="text-slate-500 mb-12">Mengetahui, Guru Pembimbing IPA</p>
+                        <p class="font-bold border-t border-slate-400 w-44 mx-auto pt-1">( ............................................ )</p>
+                    </div>
+                    <div>
+                        <p class="text-slate-500 mb-12">Malang, ......................... 2026<br>Peserta Didik</p>
+                        <p class="font-bold border-t border-slate-400 w-44 mx-auto pt-1">( ............................................ )</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 5: KUIS INTERAKTIF ================= -->
+        <section id="sec-kuis" class="tab-content hidden space-y-6">
+            <div class="max-w-3xl mx-auto bg-white rounded-3xl p-6 md:p-8 border border-slate-200/80 shadow-xl">
+                
+                <!-- Quiz Screen Intro -->
+                <div id="quiz-intro" class="text-center space-y-4 py-6">
+                    <div class="w-20 h-20 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-3xl mx-auto shadow-inner">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-slate-900">Evaluasi Pemahaman Jenis Zat Aditif</h3>
+                    <p class="text-xs md:text-sm text-slate-600 max-w-md mx-auto font-medium">
+                        Uji pengetahuanmu mengenai 7 jenis zat aditif alami vs buatan melalui 10 soal pilihan ganda interaktif HOTS. Umpan balik langsung akan ditampilkan!
+                    </p>
+                    <button onclick="startQuiz()" class="bg-brand-500 hover:bg-brand-600 text-white font-extrabold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:scale-105 inline-flex items-center gap-2 text-sm">
+                        <span>Mulai Kuis Sekarang</span>
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
+
+                <!-- Quiz Screen Active -->
+                <div id="quiz-active" class="hidden space-y-6">
+                    <!-- Progress Bar -->
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                        <span id="quiz-progress-text" class="text-xs font-extrabold text-brand-600 uppercase tracking-wider">Soal 1 dari 10</span>
+                        <div class="w-1/2 bg-slate-100 rounded-full h-3 overflow-hidden">
+                            <div id="quiz-progress-bar" class="bg-brand-500 h-3 rounded-full transition-all duration-300" style="width: 10%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Question Text -->
+                    <div>
+                        <h4 id="quiz-question" class="font-extrabold text-slate-900 text-base md:text-lg mb-4">
+                            <!-- Populated by JS -->
+                        </h4>
+
+                        <!-- Options Grid -->
+                        <div id="quiz-options" class="space-y-2.5 font-medium">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Instant Feedback Box -->
+                    <div id="quiz-feedback" class="hidden p-4 rounded-xl text-xs font-semibold"></div>
+
+                    <!-- Next Button -->
+                    <div class="flex justify-end pt-2">
+                        <button id="quiz-next-btn" onclick="nextQuestion()" disabled class="bg-slate-300 text-slate-500 font-bold px-6 py-2.5 rounded-xl text-xs transition flex items-center gap-2">
+                            <span>Soal Berikutnya</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Screen Result -->
+                <div id="quiz-result" class="hidden text-center space-y-6 py-6">
+                    <div class="w-24 h-24 rounded-full flex items-center justify-center text-4xl mx-auto shadow-lg" id="result-icon-bg">
+                        <i id="result-icon" class="fa-solid fa-award"></i>
+                    </div>
+
+                    <div>
+                        <span class="text-xs font-bold uppercase text-slate-400">Hasil Akhir Evaluasi</span>
+                        <h3 id="result-score-text" class="text-4xl font-extrabold text-slate-900 my-1">Skor: 0 / 100</h3>
+                        <p id="result-msg" class="text-xs md:text-sm text-slate-600 max-w-sm mx-auto font-medium"></p>
+                    </div>
+
+                    <div class="flex justify-center gap-3">
+                        <button onclick="startQuiz()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-2.5 rounded-xl text-xs transition flex items-center gap-2">
+                            <i class="fa-solid fa-rotate-right"></i>
+                            <span>Coba Lagi</span>
+                        </button>
+                        <button onclick="switchTab('lkpd')" class="bg-brand-500 hover:bg-brand-600 text-white font-bold px-6 py-2.5 rounded-xl text-xs transition flex items-center gap-2">
+                            <span>Lanjut ke LKPD</span>
+                            <i class="fa-solid fa-file-pen"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 border-t border-slate-800 mt-10 no-print">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p class="font-bold text-slate-300">Modul Interaktif IPA Kelas IX - Materi Jenis-Jenis Zat Aditif</p>
+            <p>© 2026 MGMP IPA MTs Kota Malang. Seluruh hak cipta dilindungi undang-undang.</p>
+        </div>
+    </footer>
+
+    <script>
+        // State Management
+        let currentTab = 'pendahuluan';
+
+        // Tab Switcher Function
+        function switchTab(tabId) {
+            currentTab = tabId;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('active');
+                el.classList.add('text-slate-300');
+            });
+
+            document.getElementById(`sec-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            if(activeBtn) {
+                activeBtn.classList.add('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // LAB logic for Dye testing
+        const sampleData = {
+            kunyit: { name: 'Ekstrak Kunyit (Pewarna Alami)', baseColor: 'bg-amber-500', label: 'Kuning Kunyit Alami' },
+            sirup_sintetis: { name: 'Tartrazin / Sirup (Pewarna Buatan)', baseColor: 'bg-yellow-400', label: 'Kuning Cerah Buatan' },
+            buah_naga: { name: 'Jus Buah Naga (Pewarna Alami)', baseColor: 'bg-rose-600', label: 'Merah Kebungaan Alami' },
+            rhodamin: { name: 'Saos Rhodamin B (Tekstil Terlarang)', baseColor: 'bg-pink-600', label: 'Merah Menyala Tekstil' }
+        };
+
+        let activeSampleKey = 'kunyit';
+
+        function updateLabSample() {
+            activeSampleKey = document.getElementById('sample-select').value;
+            resetLabPewarna();
+        }
+
+        function resetLabPewarna() {
+            const data = sampleData[activeSampleKey];
+            document.getElementById('lab-sample-title').innerText = data.name;
+            document.getElementById('lab-reagent-status').innerText = 'Status: Belum ditambahi reagen uji.';
+            
+            const fluid = document.getElementById('beaker-fluid');
+            fluid.className = `w-full transition-all duration-700 h-3/4 flex items-center justify-center relative shadow-inner ${data.baseColor}`;
+            document.getElementById('fluid-label').innerText = data.label;
+            
+            document.getElementById('lab-result-text').innerText = 'Silakan tambahkan larutan deterjen (basa) atau cuka (asam) untuk menguji kestabilan struktur zat warna.';
+        }
+
+        function applyReagent(reagentType) {
+            const fluid = document.getElementById('beaker-fluid');
+            const resultText = document.getElementById('lab-result-text');
+            const reagentStatus = document.getElementById('lab-reagent-status');
+
+            if (reagentType === 'deterjen') {
+                reagentStatus.innerText = 'Status: Ditambahkan Larutan Deterjen (Basa)';
+                if (activeSampleKey === 'kunyit') {
+                    fluid.className = 'w-full transition-all duration-700 h-3/4 flex items-center justify-center relative bg-red-800 shadow-inner';
+                    document.getElementById('fluid-label').innerText = 'Merah Kecokelatan Pekat';
+                    resultText.innerHTML = '<span class="text-emerald-400 font-bold">Terjadi Perubahan Warna Signifikan!</span> Senyawa curcumin alami pada kunyit sangat peka terhadap pH basa dan bereaksi menjadi warna merah kecokelatan.';
+                } else if (activeSampleKey === 'buah_naga') {
+                    fluid.className = 'w-full transition-all duration-700 h-3/4 flex items-center justify-center relative bg-purple-950 shadow-inner';
+                    document.getElementById('fluid-label').innerText = 'Ungu Gelap / Pucat';
+                    resultText.innerHTML = '<span class="text-emerald-400 font-bold">Terjadi Perubahan Warna!</span> Pigmen antosianin alami terdegradasi dan berubah warna dalam suasana basa.';
+                } else {
+                    resultText.innerHTML = '<span class="text-amber-400 font-bold">Warna Tetap Stabil!</span> Pewarna sintetis buatan (seperti Tartrazin/Rhodamin B) memiliki struktur kimia yang sangat stabil dan tidak mengalami reaksi perubahan warna mendasar saat bertemu zat basa/deterjen.';
+                }
+            } else if (reagentType === 'cuka') {
+                reagentStatus.innerText = 'Status: Ditambahkan Larutan Cuka (Asam)';
+                if (activeSampleKey === 'kunyit') {
+                    fluid.className = 'w-full transition-all duration-700 h-3/4 flex items-center justify-center relative bg-amber-400 shadow-inner';
+                    document.getElementById('fluid-label').innerText = 'Kuning Cerah Alami';
+                    resultText.innerHTML = 'Dalam suasana asam, curcumin kunyit kembali ke bentuk warna kuning cerah aslinya.';
+                } else {
+                    resultText.innerHTML = 'Pewarna sintetis mempertahankan stabilitas warnanya secara sempurna dalam kondisi asam.';
+                }
+            }
+        }
+
+        // Quiz Questions (Fokus Jenis Zat Aditif)
+        const quizQuestions = [
+            {
+                q: "1. Zat aditif yang berfungsi untuk menjaga campuran antara air dan minyak agar tidak terpisah pada pembuatan mayones atau mentega adalah...",
+                options: ["Pengemulsi (Lesisin)", "Pengawet (Benzoat)", "Penyedap (MSG)", "Pemberi Aroma (Ester)"],
+                correct: 0,
+                exp: "Pengemulsi (seperti lesisin pada telur) mengikat ikatan molekul polar (air) dan non-polar (minyak) agar menyatu secara homogen."
+            },
+            {
+                q: "2. Pewarna alami yang memberikan warna hijau terang pada kue tradisional adalah...",
+                options: ["Kunyit", "Daun Suji dan Pandan", "Buah Naga", "Wortel"],
+                correct: 1,
+                exp: "Daun suji mengandung pigmen klorofil alami yang pekat dan harum untuk pewarna hijau makanan."
+            },
+            {
+                q: "3. Manakah di bawah ini yang merupakan jenis zat aditif pemanis sintetis rendah kalori yang aman untuk penderita diabetes?",
+                options: ["Gula Aren", "Aspartam & Sorbitol", "Monosodium Glutamat", "Asam Propionat"],
+                correct: 1,
+                exp: "Aspartam dan Sorbitol adalah pemanis buatan dengan tingkat kemanisan tinggi namun rendah kalori."
+            },
+            {
+                q: "4. Senyawa pengawet sintetis yang umum digunakan untuk mencegah pertumbuhan jamur pada roti dan keju adalah...",
+                options: ["Natrium Benzoat / Asam Propionat", "Tartrazin", "Amil Asetat", "Lesisin"],
+                correct: 0,
+                exp: "Asam propionat dan benzoat berfungsi menghambat perkembangan spora jamur serta mikroorganisme pembusuk."
+            },
+            {
+                q: "5. Rasa gurih yang dihasilkan dari penambahan Monosodium Glutamat (MSG) pada makanan dikenal dengan istilah rasa...",
+                options: ["Manis", "Asam", "Umami", "Sepah"],
+                correct: 2,
+                exp: "Umami adalah rasa gurih khas dasar kelima yang dirangsang oleh senyawa glutamat pada lidah manusia."
+            },
+            {
+                q: "6. Senyawa sintetis golongan ester 'Amil Asetat' ditambahkan pada produk minuman untuk memberikan...",
+                options: ["Rasa Manis", "Aroma Pisang", "Warna Merah", "Daya Pengawet"],
+                correct: 1,
+                exp: "Amil Asetat merupakan zat aditif pemberi aroma (synthetic flavoring) dengan wangi khas buah pisang."
+            },
+            {
+                q: "7. Zat non-makanan berbahaya yang dilarang keras dijadikan pengenyal pada bakso karena dapat merusak ginjal adalah...",
+                options: ["Garam Dapur", "Boraks", "Tapioka", "Natrium Nitrit"],
+                correct: 1,
+                exp: "Boraks adalah zat kimia industri pengawet kayu dan keramik yang berbahaya jika tertelan oleh manusia."
+            },
+            {
+                q: "8. Tepung maizena, agar-agar, dan gelatin dalam pembuatan sup atau puding dikelompokkan ke dalam zat aditif...",
+                options: ["Pengental (Thickener)", "Pewarna", "Pengawet", "Pemberi Aroma"],
+                correct: 0,
+                exp: "Pengental berfungsi meningkatkan viskositas/kekentalan cairan agar adonan menjadi kenyal dan padat."
+            },
+            {
+                q: "9. Uji reaksi kimia di laboratorium menunjukkan pewarna alami kunyit bereaksi menjadi berwarna merah bata saat ditetesi zat basa. Hal ini disebabkan oleh...",
+                options: ["Kestabilan zat sintetis", "Keberadaan pigmen Curcumin yang peka pH", "Penambahan formalin", "Proses penggaraman"],
+                correct: 1,
+                exp: "Curcumin pada kunyit bereaksi secara indikator asam-basa alami dengan merubah warna saat pH meningkat (basa)."
+            },
+            {
+                q: "10. Penggunaan pewarna tekstil sintetis Rhodamin B pada saos atau jajanan sangat berbahaya karena...",
+                options: ["Dapat mengendap dan memicu kanker hati", "Membuat makanan cepat basi", "Menghilangkan rasa gurih", "Menyebabkan kelelahan otot saja"],
+                correct: 0,
+                exp: "Rhodamin B adalah pewarna tekstil beracun yang tidak dapat dimetabolisme organ hati sehingga memicu pemicu tumor/kanker."
+            }
+        ];
+
+        let quizCurrentIndex = 0;
+        let quizScore = 0;
+
+        function startQuiz() {
+            quizCurrentIndex = 0;
+            quizScore = 0;
+            
+            document.getElementById('quiz-intro').classList.add('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-active').classList.remove('hidden');
+
+            renderQuizQuestion();
+        }
+
+        function renderQuizQuestion() {
+            const q = quizQuestions[quizCurrentIndex];
+            document.getElementById('quiz-progress-text').innerText = `Soal ${quizCurrentIndex + 1} dari ${quizQuestions.length}`;
+            document.getElementById('quiz-progress-bar').style.width = `${((quizCurrentIndex + 1) / quizQuestions.length) * 100}%`;
+
+            document.getElementById('quiz-question').innerText = q.q;
+            
+            const optionsBox = document.getElementById('quiz-options');
+            optionsBox.innerHTML = '';
+
+            const feedbackBox = document.getElementById('quiz-feedback');
+            feedbackBox.className = 'hidden';
+
+            const nextBtn = document.getElementById('quiz-next-btn');
+            nextBtn.disabled = true;
+            nextBtn.className = "bg-slate-300 text-slate-500 font-bold px-6 py-2.5 rounded-xl text-xs transition flex items-center gap-2 cursor-not-allowed";
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-3.5 rounded-xl border border-slate-200 hover:border-brand-500 hover:bg-emerald-50/50 text-xs md:text-sm font-semibold text-slate-800 transition flex items-center justify-between shadow-sm";
+                btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle text-slate-300"></i>`;
+                btn.onclick = () => selectQuizAnswer(idx, btn);
+                optionsBox.appendChild(btn);
+            });
+        }
+
+        function selectQuizAnswer(selectedIndex, clickedBtn) {
+            const q = quizQuestions[quizCurrentIndex];
+            const optionsBox = document.getElementById('quiz-options');
+            
+            Array.from(optionsBox.children).forEach((child, idx) => {
+                child.disabled = true;
+                child.classList.remove('hover:border-brand-500', 'hover:bg-emerald-50/50');
+                if(idx === q.correct) {
+                    child.className = "w-full text-left p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-xs md:text-sm font-bold text-emerald-900 flex items-center justify-between shadow";
+                    child.querySelector('i').className = "fa-solid fa-circle-check text-emerald-600 text-base";
+                } else if(idx === selectedIndex) {
+                    child.className = "w-full text-left p-3.5 rounded-xl border-2 border-rose-500 bg-rose-50 text-xs md:text-sm font-bold text-rose-900 flex items-center justify-between shadow";
+                    child.querySelector('i').className = "fa-solid fa-circle-xmark text-rose-600 text-base";
+                }
+            });
+
+            const feedbackBox = document.getElementById('quiz-feedback');
+            feedbackBox.classList.remove('hidden');
+
+            if (selectedIndex === q.correct) {
+                quizScore += 10;
+                feedbackBox.className = "p-3.5 rounded-xl text-xs font-semibold bg-emerald-100 text-emerald-900 border border-emerald-300";
+                feedbackBox.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> <strong>Benar!</strong> ${q.exp}`;
+            } else {
+                feedbackBox.className = "p-3.5 rounded-xl text-xs font-semibold bg-rose-100 text-rose-900 border border-rose-300";
+                feedbackBox.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 mr-1"></i> <strong>Kurang Tepat.</strong> ${q.exp}`;
+            }
+
+            const nextBtn = document.getElementById('quiz-next-btn');
+            nextBtn.disabled = false;
+            nextBtn.className = "bg-brand-500 hover:bg-brand-600 text-white font-extrabold px-6 py-2.5 rounded-xl text-xs transition flex items-center gap-2 cursor-pointer shadow-md";
+        }
+
+        function nextQuestion() {
+            quizCurrentIndex++;
+            if (quizCurrentIndex < quizQuestions.length) {
+                renderQuizQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-active').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+
+            document.getElementById('result-score-text').innerText = `Skor: ${quizScore} / 100`;
+
+            const iconBg = document.getElementById('result-icon-bg');
+            const icon = document.getElementById('result-icon');
+            const msg = document.getElementById('result-msg');
+
+            if (quizScore >= 80) {
+                iconBg.className = "w-24 h-24 rounded-full flex items-center justify-center text-4xl mx-auto shadow-lg bg-emerald-100 text-brand-600";
+                icon.className = "fa-solid fa-trophy";
+                msg.innerText = "Luar biasa! Kamu telah menguasai jenis-jenis zat aditif dengan sangat baik!";
+                
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+                }
+            } else if (quizScore >= 60) {
+                iconBg.className = "w-24 h-24 rounded-full flex items-center justify-center text-4xl mx-auto shadow-lg bg-amber-100 text-amber-600";
+                icon.className = "fa-solid fa-star";
+                msg.innerText = "Bagus! Kamu sudah memahami sebagian besar jenis zat aditif. Pelajari kembali poin yang keliru.";
+            } else {
+                iconBg.className = "w-24 h-24 rounded-full flex items-center justify-center text-4xl mx-auto shadow-lg bg-rose-100 text-rose-600";
+                icon.className = "fa-solid fa-book-open-reader";
+                msg.innerText = "Jangan berkecil hati! Pelajari ulang modul materi dan lakukan eksperimen di Lab Virtual.";
+            }
+        }
+    </script>
+</body>
+</html>
